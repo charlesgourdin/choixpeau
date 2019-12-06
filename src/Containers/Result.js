@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Message from '../Components/Message'
 import { connect } from 'react-redux'
 
-const Result = ({ houses, selectedHouses, dispatch }) => {
+class Result extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+        }
+    }
 
-    let [house, changeHouse] = useState(selectedHouses)
 
-    return (
-        <div>
-            <ul>
-                {houses.map(house => <li key={house}>{house}</li>)}
-            </ul>
-            <Message message={selectedHouses} />
-        </div>
-    )
+    componentDidMount=()=>{
+        setInterval(() =>  this.props.dispatch({ type:  '' }), 1000)
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {this.props.houses.map(house => <li key={house}>{house}</li>)}
+                </ul>
+                <Message message={this.props.selectedHouses} />
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
@@ -26,3 +36,5 @@ export default connect(mapStateToProps)(Result)
 // export default connect(store => store)(Result)
 
 // setInterval(() =>  this.props.dispatch({ type:  '' }), 1000)
+
+
