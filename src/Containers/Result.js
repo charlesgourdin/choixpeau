@@ -11,7 +11,7 @@ class Result extends Component {
 
 
     componentDidMount=()=>{
-        setInterval(() =>  this.props.dispatch({ type:  '' }), 1000)
+        setInterval(() =>  this.props.dispatch({ type:  'UPDATE_CHOICE_WITH_MY_INDEX' , indexSelected: Math.floor(Math.random() * 4)}), 1000)
     }
 
     render() {
@@ -26,15 +26,6 @@ class Result extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    houses: state.houses,
-    selectedHouses: state.selectedHouses
-})
-
-export default connect(mapStateToProps)(Result)
-
-// export default connect(store => store)(Result)
-
-// setInterval(() =>  this.props.dispatch({ type:  '' }), 1000)
+export default connect(store=>store)(Result)
 
 
